@@ -1,0 +1,731 @@
+/* ============================================================
+   AIRE Y CLIMA ESPECIALIZADO
+   Formulario de Postulación — Hoja de Estilos
+   Paleta: Blanco + Rojo corporativo
+   Enfoque: Mobile-first, profesional
+   ============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES GLOBALES (Design Tokens)
+   ============================================================ */
+:root {
+  /* --- Marca --- */
+  --color-primario:        #c81e2b;    /* Rojo corporativo */
+  --color-primario-hover:  #a5151f;    /* Rojo oscuro al hover */
+  --color-primario-claro:  #fdecee;    /* Rojo muy claro (fondos) */
+  --color-primario-borde:  #f4b8be;    /* Rojo claro (bordes) */
+
+  /* --- Acento frío (aire acondicionado) --- */
+  --color-acento:          #0d6efd;    /* Azul frío */
+  --color-acento-claro:    #e7f1ff;    /* Azul muy claro */
+
+  /* --- Estados --- */
+  --color-exito:           #0e9f6e;
+  --color-exito-bg:        #e6f7f1;
+  --color-error:           #c81e2b;
+  --color-error-bg:        #fdecee;
+
+  /* --- Neutros --- */
+  --color-texto:           #1a1d21;
+  --color-texto-suave:     #5c6470;
+  --color-texto-tenue:     #8c95a3;
+  --color-borde:           #e3e6ea;
+  --color-borde-fuerte:    #c9ced5;
+  --color-fondo:           #f7f8fa;
+  --color-tarjeta:         #ffffff;
+  --color-placeholder:     #a8b0bb;
+
+  /* --- Tipografía --- */
+  --fuente: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+  /* --- Espaciados --- */
+  --esp-xs:  4px;
+  --esp-sm:  8px;
+  --esp-md:  16px;
+  --esp-lg:  24px;
+  --esp-xl:  32px;
+  --esp-2xl: 48px;
+
+  /* --- Radios --- */
+  --radio-sm: 8px;
+  --radio-md: 12px;
+  --radio-lg: 18px;
+
+  /* --- Sombras --- */
+  --sombra-sm:  0 1px 2px rgba(26, 29, 33, 0.06);
+  --sombra-md:  0 4px 16px rgba(26, 29, 33, 0.08);
+  --sombra-lg:  0 12px 40px rgba(26, 29, 33, 0.12);
+  --sombra-rojo: 0 8px 24px rgba(200, 30, 43, 0.22);
+
+  /* --- Transiciones --- */
+  --transicion:      0.2s ease-in-out;
+  --transicion-lenta: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================================
+   2. RESET Y BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  background-image:
+    radial-gradient(circle at 0% 0%,   rgba(200, 30, 43, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(13, 110, 253, 0.04) 0%, transparent 40%);
+  background-attachment: fixed;
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--esp-md) var(--esp-sm);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Inputs: 16px para evitar zoom en iOS */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ============================================================
+   3. ENCABEZADO CON IDENTIDAD CORPORATIVA
+   ============================================================ */
+.encabezado {
+  text-align: center;
+  padding: var(--esp-lg) var(--esp-md) var(--esp-xl);
+  margin-bottom: var(--esp-md);
+  position: relative;
+}
+
+/* Barra decorativa superior */
+.encabezado::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primario), var(--color-acento));
+  border-radius: 4px;
+  margin: 0 auto var(--esp-lg);
+}
+
+.encabezado h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-primario);
+  margin-bottom: var(--esp-xs);
+  line-height: 1.2;
+}
+
+.encabezado .subtitulo {
+  font-size: 0.95rem;
+  color: var(--color-texto-suave);
+  max-width: 520px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Marca de la empresa */
+.marca-empresa {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-sm);
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: var(--esp-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  letter-spacing: 0.02em;
+  box-shadow: var(--sombra-sm);
+}
+
+.marca-empresa::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(200, 30, 43, 0.15);
+}
+
+
+/* ============================================================
+   4. CONTENEDOR PRINCIPAL
+   ============================================================ */
+.contenedor {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.tarjeta {
+  background-color: var(--color-tarjeta);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-lg);
+  padding: var(--esp-lg) var(--esp-md);
+  border: 1px solid var(--color-borde);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa superior (rojo + azul) */
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--color-primario) 0%,
+    var(--color-primario) 60%,
+    var(--color-acento) 100%);
+}
+
+
+/* ============================================================
+   5. FIELDSETS (bloques)
+   ============================================================ */
+.grupo-campos {
+  border: none;
+  margin-bottom: var(--esp-xl);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--esp-md);
+}
+
+.grupo-campos:last-of-type {
+  margin-bottom: var(--esp-md);
+}
+
+.grupo-campos legend {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  padding-bottom: var(--esp-sm);
+  margin-bottom: var(--esp-md);
+  border-bottom: 2px solid var(--color-primario-claro);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-sm);
+  letter-spacing: -0.01em;
+}
+
+/* Viñeta decorativa antes del legend */
+.grupo-campos legend::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--color-primario);
+  border-radius: 4px;
+}
+
+.grupo-campos .ayuda {
+  font-size: 0.85rem;
+  color: var(--color-texto-tenue);
+  margin-bottom: var(--esp-sm);
+  grid-column: 1 / -1;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   6. CAMPOS INDIVIDUALES
+   ============================================================ */
+.campo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;   /* Evita desbordes en grid */
+}
+
+.campo label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: var(--esp-sm);
+  letter-spacing: 0.01em;
+}
+
+.campo .req {
+  color: var(--color-primario);
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+.campo .opcional {
+  color: var(--color-texto-tenue);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+/* Inputs y selects */
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 13px 16px;
+  min-height: 50px;
+  border: 1.5px solid var(--color-borde-fuerte);
+  border-radius: var(--radio-sm);
+  background-color: #fff;
+  color: var(--color-texto);
+  font-size: 16px;
+  font-weight: 500;
+  transition:
+    border-color var(--transicion),
+    box-shadow var(--transicion),
+    background-color var(--transicion);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+/* Select: flecha personalizada */
+.campo select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c81e2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+  padding-right: 44px;
+  cursor: pointer;
+  color: var(--color-texto);
+}
+
+.campo select:invalid {
+  color: var(--color-placeholder);
+}
+
+.campo input::placeholder {
+  color: var(--color-placeholder);
+  font-weight: 400;
+}
+
+/* Hover */
+.campo input:hover:not(:focus),
+.campo select:hover:not(:focus) {
+  border-color: var(--color-borde-fuerte);
+  background-color: #fcfcfd;
+}
+
+/* Foco */
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--color-primario);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(200, 30, 43, 0.12);
+}
+
+/* Estado de error */
+.campo.con-error input,
+.campo.con-error select {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.campo.con-error input:focus,
+.campo.con-error select:focus {
+  box-shadow: 0 0 0 4px rgba(200, 30, 43, 0.15);
+}
+
+
+/* ============================================================
+   7. MENSAJES DE ERROR INLINE
+   ============================================================ */
+.campo .error {
+  font-size: 0.8rem;
+  color: var(--color-error);
+  margin-top: var(--esp-xs);
+  font-weight: 500;
+  min-height: 0;
+  transition: min-height var(--transicion);
+}
+
+.campo .error:not(:empty) {
+  min-height: 18px;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-xs);
+}
+
+.campo .error:not(:empty)::before {
+  content: "⚠";
+  font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   8. MENSAJE GLOBAL DE ERROR
+   ============================================================ */
+.mensaje-global {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-primario-borde);
+  border-left: 4px solid var(--color-primario);
+  color: var(--color-primario-hover);
+  padding: var(--esp-md);
+  border-radius: var(--radio-sm);
+  margin-bottom: var(--esp-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  grid-column: 1 / -1;
+}
+
+.mensaje-global[hidden] {
+  display: none;
+}
+
+
+/* ============================================================
+   9. BOTONES
+   ============================================================ */
+.acciones-formulario {
+  margin-top: var(--esp-md);
+  grid-column: 1 / -1;
+}
+
+.btn-enviar,
+.btn-secundario {
+  width: 100%;
+  min-height: 54px;
+  padding: 15px var(--esp-lg);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: var(--radio-md);
+  cursor: pointer;
+  transition:
+    background-color var(--transicion),
+    transform var(--transicion),
+    box-shadow var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-sm);
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-enviar {
+  background-color: var(--color-primario);
+  color: #fff;
+  box-shadow: var(--sombra-rojo);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.05));
+}
+
+.btn-enviar:hover:not(:disabled) {
+  background-color: var(--color-primario-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(200, 30, 43, 0.30);
+}
+
+.btn-enviar:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--sombra-rojo);
+}
+
+.btn-enviar:disabled {
+  background-color: var(--color-texto-tenue);
+  background-image: none;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  margin-top: var(--esp-lg);
+  box-shadow: none;
+}
+
+.btn-secundario:hover {
+  background-color: var(--color-primario-claro);
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   10. SPINNER
+   ============================================================ */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: girar 0.7s linear infinite;
+}
+
+.spinner[hidden] {
+  display: none;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ============================================================
+   11. SECCIÓN DE ÉXITO
+   ============================================================ */
+.exito {
+  text-align: center;
+  padding: var(--esp-2xl) var(--esp-md);
+  animation: aparecer 0.4s ease-out;
+}
+
+.exito[hidden] {
+  display: none;
+}
+
+.icono-exito {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto var(--esp-lg);
+  color: var(--color-exito);
+  background: radial-gradient(circle, rgba(14, 159, 110, 0.15) 0%, rgba(14, 159, 110, 0.05) 70%);
+  border: 2px solid rgba(14, 159, 110, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pop 0.5s ease-out 0.1s both;
+}
+
+.icono-exito svg {
+  width: 48px;
+  height: 48px;
+}
+
+.exito h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-texto);
+  margin-bottom: var(--esp-sm);
+}
+
+.exito p {
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: var(--esp-sm);
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* ============================================================
+   12. PIE DE PÁGINA
+   ============================================================ */
+.pie {
+  text-align: center;
+  padding: var(--esp-lg) var(--esp-md) var(--esp-md);
+  font-size: 0.8rem;
+  color: var(--color-texto-tenue);
+  margin-top: var(--esp-lg);
+  border-top: 1px solid var(--color-borde);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+
+/* ============================================================
+   13. MEDIA QUERIES
+   ============================================================ */
+
+/* ≥ 480px — celulares grandes */
+@media (min-width: 480px) {
+  body {
+    padding: var(--esp-lg) var(--esp-md);
+  }
+
+  .tarjeta {
+    padding: var(--esp-xl);
+  }
+
+  .encabezado h1 {
+    font-size: 1.75rem;
+  }
+}
+
+
+/* ≥ 768px — tablet y desktop */
+@media (min-width: 768px) {
+
+  /* Grid de 2 columnas para los campos */
+  .grupo-campos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .campo.ancho-completo {
+    grid-column: 1 / -1;
+  }
+
+  .grupo-campos legend,
+  .grupo-campos .ayuda {
+    grid-column: 1 / -1;
+  }
+
+  .encabezado h1 {
+    font-size: 2.1rem;
+  }
+
+  .encabezado .subtitulo {
+    font-size: 1rem;
+  }
+
+  /* Botón de envío: no full width en desktop */
+  .btn-enviar {
+    width: auto;
+    min-width: 260px;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .tarjeta {
+    padding: var(--esp-2xl) var(--esp-xl);
+  }
+}
+
+
+/* ≥ 1024px */
+@media (min-width: 1024px) {
+  .contenedor {
+    max-width: 780px;
+  }
+}
+
+
+/* ============================================================
+   14. ACCESIBILIDAD
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Foco visible por teclado */
+:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   15. LIBRERÍAS MÓVILES / TÁCTILES
+   ============================================================ */
+
+/* Respeta el "notch" de iPhone en orientación landscape */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(var(--esp-sm), env(safe-area-inset-left));
+    padding-right: max(var(--esp-sm), env(safe-area-inset-right));
+  }
+}
+
+/* Mejoras de interacción en pantallas táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .btn-enviar:hover:not(:disabled),
+  .btn-secundario:hover {
+    transform: none;
+    box-shadow: var(--sombra-rojo);
+  }
+
+  .campo input,
+  .campo select {
+    font-size: 16px;   /* Refuerza el no-zoom en iOS */
+  }
+
+  /* Área táctil mínima de 48px garantizada */
+  .campo input,
+  .campo select,
+  .btn-enviar,
+  .btn-secundario {
+    min-height: 50px;
+  }
+}
+
+
+/* ============================================================
+   16. SOPORTE PARA MODO OSCURO (opcional, automático)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-texto:        #f1f3f6;
+    --color-texto-suave:  #b8c0cc;
+    --color-texto-tenue:  #8c95a3;
+    --color-borde:        #2b3038;
+    --color-borde-fuerte: #3a4149;
+    --color-fondo:        #0f1216;
+    --color-tarjeta:      #181c22;
+    --color-placeholder:  #6b7280;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 0% 0%,   rgba(200, 30, 43, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(13, 110, 253, 0.08) 0%, transparent 40%);
+  }
+
+  .campo input,
+  .campo select {
+    background-color: #0f1216;
+  }
+
+  .campo input:hover:not(:focus),
+  .campo select:hover:not(:focus) {
+    background-color: #1a1f26;
+  }
+}

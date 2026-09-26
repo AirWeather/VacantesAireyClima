@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de postulación para vacantes en Aire y Clima Especializado">
+  <meta name="theme-color" content="#c81e2b">
+  <meta name="author" content="Aire y Clima Especializado">
+
+  <!-- Open Graph (para compartir en redes) -->
+  <meta property="og:title" content="Formulario de Postulación — Aire y Clima Especializado">
+  <meta property="og:description" content="Completa tus datos para participar en nuestro proceso de selección">
+  <meta property="og:type" content="website">
+
+  <title>Formulario de Postulación — Aire y Clima Especializado</title>
+
+  <!-- ============================================================ -->
+  <!--  FUENTES — Inter (tipografía profesional)                    -->
+  <!-- ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ============================================================ -->
+  <!--  CSS externo — separación de responsabilidades                -->
+  <!-- ============================================================ -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- ============================================================ -->
+  <!--  ENCABEZADO DE LA PÁGINA                                     -->
+  <!-- ============================================================ -->
+  <header class="encabezado">
+
+    <!-- Marca de la empresa -->
+    <span class="marca-empresa">Aire y Clima Especializado</span>
+
+    <h1>Formulario de Postulación</h1>
+    <p class="subtitulo">Completa tus datos para participar en el proceso de selección</p>
+  </header>
+
+
+  <!-- ============================================================ -->
+  <!--  CONTENEDOR PRINCIPAL                                        -->
+  <!-- ============================================================ -->
+  <main class="contenedor">
+
+
+    <!-- ========================================================== -->
+    <!--  SECCIÓN 1: FORMULARIO (visible al inicio)                 -->
+    <!-- ========================================================== -->
+    <section id="seccion-formulario" class="tarjeta">
+
+      <form id="formulario-vacante" novalidate autocomplete="on">
+
+        <!-- ------------------------------------------------------ -->
+        <!--  BLOQUE: DATOS PERSONALES                              -->
+        <!-- ------------------------------------------------------ -->
+        <fieldset class="grupo-campos">
+          <legend>Datos personales</legend>
+
+          <div class="campo ancho-completo">
+            <label for="nombre">Nombre completo <span class="req">*</span></label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej. Juan Pérez López"
+              required
+              minlength="3"
+              maxlength="100"
+              autocomplete="name">
+            <small class="error" data-error-de="nombre"></small>
+          </div>
+
+          <div class="campo">
+            <label for="edad">Edad <span class="req">*</span></label>
+            <input
+              type="number"
+              id="edad"
+              name="edad"
+              placeholder="Ej. 28"
+              required
+              min="18"
+              max="70"
+              inputmode="numeric">
+            <small class="error" data-error-de="edad"></small>
+          </div>
+
+          <div class="campo">
+            <label for="telefono">Teléfono <span class="req">*</span></label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="10 dígitos"
+              required
+              pattern="\d{10}"
+              maxlength="10"
+              inputmode="numeric"
+              autocomplete="tel">
+            <small class="error" data-error-de="telefono"></small>
+          </div>
+
+          <div class="campo ancho-completo">
+            <label for="domicilio">Domicilio <span class="req">*</span></label>
+            <input
+              type="text"
+              id="domicilio"
+              name="domicilio"
+              placeholder="Calle, número, colonia, ciudad"
+              required
+              maxlength="200"
+              autocomplete="street-address">
+            <small class="error" data-error-de="domicilio"></small>
+          </div>
+
+          <div class="campo ancho-completo">
+            <label for="correo">Correo electrónico <span class="req">*</span></label>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder="ejemplo@correo.com"
+              required
+              autocomplete="email">
+            <small class="error" data-error-de="correo"></small>
+          </div>
+
+        </fieldset>
+
+
+        <!-- ------------------------------------------------------ -->
+        <!--  BLOQUE: PERFIL PROFESIONAL                            -->
+        <!-- ------------------------------------------------------ -->
+        <fieldset class="grupo-campos">
+          <legend>Perfil profesional</legend>
+
+          <div class="campo">
+            <label for="puesto">Puesto al que aplica <span class="req">*</span></label>
+            <select id="puesto" name="puesto" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Gerente de Recursos Humanos">Gerente de Recursos Humanos</option>
+              <option value="Técnico">Técnico</option>
+              <option value="Subjefe de Obra">Subjefe de Obra</option>
+            </select>
+            <small class="error" data-error-de="puesto"></small>
+          </div>
+
+          <div class="campo">
+            <label for="escolaridad">Escolaridad <span class="req">*</span></label>
+            <select id="escolaridad" name="escolaridad" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Primaria">Primaria</option>
+              <option value="Secundaria">Secundaria</option>
+              <option value="Preparatoria">Preparatoria</option>
+              <option value="Licenciatura">Licenciatura</option>
+              <option value="Maestría">Maestría</option>
+              <option value="Doctorado">Doctorado</option>
+            </select>
+            <small class="error" data-error-de="escolaridad"></small>
+          </div>
+
+          <div class="campo">
+            <label for="experiencia">Años de experiencia <span class="req">*</span></label>
+            <input
+              type="number"
+              id="experiencia"
+              name="experiencia"
+              placeholder="Ej. 5"
+              required
+              min="0"
+              max="60"
+              inputmode="numeric">
+            <small class="error" data-error-de="experiencia"></small>
+          </div>
+
+          <div class="campo">
+            <label for="pretension">Pretensión económica (MXN) <span class="req">*</span></label>
+            <input
+              type="number"
+              id="pretension"
+              name="pretension"
+              placeholder="Ej. 15000"
+              required
+              min="1"
+              inputmode="numeric">
+            <small class="error" data-error-de="pretension"></small>
+          </div>
+
+          <div class="campo ancho-completo">
+            <label for="traslado">Tiempo de traslado <span class="req">*</span></label>
+            <select id="traslado" name="traslado" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Menos de 30 minutos">Menos de 30 minutos</option>
+              <option value="30 a 60 minutos">30 a 60 minutos</option>
+              <option value="1 a 2 horas">1 a 2 horas</option>
+              <option value="Más de 2 horas">Más de 2 horas</option>
+            </select>
+            <small class="error" data-error-de="traslado"></small>
+          </div>
+
+        </fieldset>
+
+
+        <!-- ------------------------------------------------------ -->
+        <!--  BLOQUE: EMPLEOS ANTERIORES                            -->
+        <!-- ------------------------------------------------------ -->
+        <fieldset class="grupo-campos">
+          <legend>Empleos anteriores</legend>
+          <p class="ayuda">Indica al menos 1 empleo. Los campos 2 y 3 son opcionales.</p>
+
+          <div class="campo ancho-completo">
+            <label for="empleo1">Empleo anterior 1 <span class="req">*</span></label>
+            <input
+              type="text"
+              id="empleo1"
+              name="empleo1"
+              placeholder="Ej. Empresa XYZ — Técnico de campo (2019-2023)"
+              required
+              maxlength="150">
+            <small class="error" data-error-de="empleo1"></small>
+          </div>
+
+          <div class="campo ancho-completo">
+            <label for="empleo2">Empleo anterior 2 <span class="opcional">(opcional)</span></label>
+            <input
+              type="text"
+              id="empleo2"
+              name="empleo2"
+              placeholder="Ej. Empresa ABC — Auxiliar administrativo (2017-2019)"
+              maxlength="150">
+            <small class="error" data-error-de="empleo2"></small>
+          </div>
+
+          <div class="campo ancho-completo">
+            <label for="empleo3">Empleo anterior 3 <span class="opcional">(opcional)</span></label>
+            <input
+              type="text"
+              id="empleo3"
+              name="empleo3"
+              placeholder="Ej. Empresa 123 — Ayudante general (2015-2017)"
+              maxlength="150">
+            <small class="error" data-error-de="empleo3"></small>
+          </div>
+
+        </fieldset>
+
+
+        <!-- ------------------------------------------------------ -->
+        <!--  MENSAJE GLOBAL DE ERROR (backend)                     -->
+        <!-- ------------------------------------------------------ -->
+        <div id="mensaje-global" class="mensaje-global" role="alert" hidden></div>
+
+
+        <!-- ------------------------------------------------------ -->
+        <!--  BOTÓN ENVIAR                                          -->
+        <!-- ------------------------------------------------------ -->
+        <div class="acciones-formulario">
+          <button type="submit" id="btn-enviar" class="btn-enviar">
+            <span class="texto-btn">Enviar solicitud</span>
+            <span class="spinner" hidden></span>
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+
+    <!-- ========================================================== -->
+    <!--  SECCIÓN 2: MENSAJE DE ÉXITO (oculto por defecto)          -->
+    <!-- ========================================================== -->
+    <section id="seccion-exito" class="tarjeta exito" hidden>
+
+      <div class="icono-exito" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+
+      <h2>¡Solicitud enviada con éxito!</h2>
+      <p>
+        Hemos recibido tus datos correctamente.<br>
+        Nos pondremos en contacto contigo si tu perfil coincide con la vacante.
+      </p>
+
+      <button type="button" id="btn-nueva-solicitud" class="btn-secundario">
+        Enviar otra solicitud
+      </button>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ============================================================ -->
+  <!--  PIE DE PÁGINA                                               -->
+  <!-- ============================================================ -->
+  <footer class="pie">
+    <p>© <span id="anio"></span> — Aire y Clima Especializado. Todos los derechos reservados.</p>
+  </footer>
+
+
+  <!-- ============================================================ -->
+  <!--  JS externo — al final del body para que el DOM ya exista    -->
+  <!-- ============================================================ -->
+  <script src="scripts.js"></script>
+
+</body>
+</html>
